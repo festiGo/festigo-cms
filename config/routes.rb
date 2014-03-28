@@ -2,7 +2,7 @@ require 'api'
 Gohike::Application.routes.draw do
 
 
-  #root :to => "start#index"
+  root :to => "home#index"
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
     get "state_province_list", :to => "cities#states_or_provinces"
