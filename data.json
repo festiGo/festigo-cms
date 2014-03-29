@@ -68,7 +68,7 @@
     "longitude": "4.8982083",
     "image": {
       "md5": null,
-      "url": "https://gohike.s3.amazonaws.com/uploads/location/image/1/mobile_2013-04-19_12.58.46.jpg"
+      "url": "https://festigo.s3.amazonaws.com/uploads/location/image/1/mobile_2013-04-19_12.58.46.jpg"
     },
     "route_id": 1
   },
@@ -85,7 +85,7 @@
     "longitude": "4.89765699",
     "image": {
       "md5": null,
-      "url": "https://gohike.s3.amazonaws.com/uploads/location/image/9/mobile_Amsterdam_DeWaag.JPG"
+      "url": "https://festigo.s3.amazonaws.com/uploads/location/image/9/mobile_Amsterdam_DeWaag.JPG"
     },
     "route_id": 1
   },

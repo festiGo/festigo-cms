@@ -5,6 +5,6 @@ CarrierWave.configure do |config|
       :aws_secret_access_key  => ENV["S3_SECRET"],       # required
       :region                 => 'eu-west-1'
   }
-  config.fog_directory  = 'gohike' # required
+  config.fog_directory  = 'festigo' # required
 
 end
