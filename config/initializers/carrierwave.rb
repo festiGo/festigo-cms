@@ -3,7 +3,7 @@ CarrierWave.configure do |config|
       :provider               => 'AWS',       # required
       :aws_access_key_id      => ENV["S3_ACCESS"],       # required
       :aws_secret_access_key  => ENV["S3_SECRET"],       # required
-      :region                 => 'eu-west-1'
+      #:region                 => 'eu-west-1'
   }
   config.fog_directory  = 'festigo' # required
 

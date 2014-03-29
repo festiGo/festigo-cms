@@ -16,7 +16,7 @@ gem 'gmaps4rails'
 gem 'redis'
 gem 'grape-rabl'
 gem 'mini_magick'
-gem "fog"
+gem 'fog', '>= 1.15.0'
 gem "remotipart", "~> 1.0"
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'globalize3'
