@@ -1,5 +1,13 @@
 <h4 id="route_details">
   <%= t(:details) %>
+  <% if @validation_errors != nil
+     @validation_errors.each do |attribute, error| %>
+      Validation Errors:
+      <div class="alert alert-error">
+        <%= error %>
+      </div>
+    <% end
+       end %>
   <% if can? :publish, @route %>
     <%
        class_attr = "publish btn btn-mini btn-warning pull-right"

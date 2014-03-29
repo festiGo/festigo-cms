@@ -31,7 +31,7 @@ class Route < ActiveRecord::Base
 
 
   def validate_for_publishing
-    return true
+    #return true
     locales = translated_locales
     waypoints.joins(:location).each do |waypoint|
       locales.each do |locale|
@@ -40,6 +40,6 @@ class Route < ActiveRecord::Base
         end
       end
     end
-    errors.empty? ? true : false
+    return errors
   end
 end

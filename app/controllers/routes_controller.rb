@@ -39,7 +39,8 @@ class RoutesController < InheritedResources::Base
   end
 
   def publish
-    if @route.validate_for_publishing
+    errors = @route.validate_for_publishing
+    if errors.empty?
       if @route.published_key.blank?
         @route.published_key = Devise.friendly_token
       end
@@ -54,7 +55,12 @@ class RoutesController < InheritedResources::Base
       @route.update_attribute :published_key, published_key
       render :partial => "details"
     else
-
+      logger.warn "Validation Errors in Route #{@route.id}"
+      errors.messages.each do |attribute, error|
+        logger.warn error
+      end
+      @validation_errors = errors.messages
+      render :partial => "details"
     end
 
 
