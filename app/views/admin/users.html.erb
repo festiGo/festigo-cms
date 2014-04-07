@@ -1,0 +1,36 @@
+<h1>Listing Users</h1>
+
+
+<div class="row">
+
+
+  <table class="table table-striped">
+    <tbody>
+    <tr>
+      <th>Login/Email</th>
+      <th>Roles</th>
+      <th>Organization</th>
+      <th>Phone</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td>user.login</td>
+        <td><%= link_to checkin.location.name, checkin.location unless checkin.location.nil? %></td>
+        <td><%= link_to checkin.device.identifier, checkin.device unless checkin.device.nil? %></td>
+        <td><%= checkin.stamp %></td>
+        <td><%= link_to 'Show', checkin %></td>
+
+
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <br />
+
+
+</div>

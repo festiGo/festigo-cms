@@ -11,6 +11,8 @@ Gohike::Application.routes.draw do
 
     get "start", :to => "start#index"
 
+    get "admin/index"
+    get "admin/users"
 
     get "home", :to => "home#index"
 

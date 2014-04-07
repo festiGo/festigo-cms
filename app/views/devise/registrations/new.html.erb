@@ -8,6 +8,9 @@
     <% if f.object.password_required? %>
       <%= f.input :password, :required => true %>
       <%= f.input :password_confirmation, :required => true %>
+      <%= f.input :organization %>
+      <%= f.input :phone_number %>
+      <%= f.input :city %>
     <% end %>
   </div>
 

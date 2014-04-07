@@ -17,6 +17,8 @@ en:
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your account before continuing."
     mailer:
+      new_user_registered:
+        subject: "New User Registered to the CMS"
       confirmation_instructions:
         subject: "Confirmation instructions"
       reset_password_instructions:
