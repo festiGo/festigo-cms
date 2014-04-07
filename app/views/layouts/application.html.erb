@@ -32,9 +32,10 @@
         <div class="container nav-collapse">
           <ul class="nav">
             <% if can? :read, City %>
-
               <li><%= link_to t(:'navbar.cities'), cities_path, :class => current_page?(:controller => "/cities") ? "active" : "" %></li>
-
+            <% end %>
+            <% if can? :read, City %>
+              <%= link_to t(:profiles), route_profiles_path, :class => current_page?(:controller => "/profiles") ? "active" : "" %>
             <% end %>
             <% if can? :read, Route %>
               <li><%= link_to t(:'navbar.routes'), routes_path, :class => current_page?(:controller => "/routes") ? "active" : "" %></li>
