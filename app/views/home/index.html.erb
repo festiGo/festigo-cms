@@ -1,11 +1,21 @@
 <div class="hero-unit">
   <h1>Hello!</h1>
-  <p><%= t('Welcome to FestiGo!') %>.</p>
-  <p>
-    <%= t('Watch this movie to learn how it works:') %>
-  </p>
-  <p class="centered">
 
+  <p><%= t('.welcome_to', name: Rails.configuration.application_name) %>.</p>
+
+  <div class="lead">
+    <% if current_user.nil? %>
+    <p class="centered">
+      <a href="<%= register_path %>" class="btn btn-primary btn-large"><%= t('.register_button') %> »</a>
+    </p>
+  </div>
+  <% else %>
+    <p>
+      <%= t('.watch_this_movie_to_learn_how_it_works') %>:
+    </p>
+  <% end %>
+
+  <p class="centered">
     <iframe src="//player.vimeo.com/video/73848324" width="800" height="451" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   </p>
 </div>

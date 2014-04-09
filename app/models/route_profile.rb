@@ -4,8 +4,8 @@ class RouteProfile < ActiveRecord::Base
 
   default_scope order('priority DESC')
 
-  MIN_HEIGHT = 200
-  MIN_WIDTH = 200
+  MIN_HEIGHT = Rails.configuration.route_profile_image_min_height
+  MIN_WIDTH = Rails.configuration.route_profile_image_min_width
 
   attr_accessible :description, :image, :name, :translations_attributes,:city, :city_id, :priority
 

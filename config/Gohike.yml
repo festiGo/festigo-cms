@@ -1,0 +1,35 @@
+#
+# Main configuration file for functionality of Gohike app instance.
+#
+
+# Configuration shared between all environments:
+defaults: &defaults
+
+########## Basic settings ##########
+
+  # The domain from where your app is served
+  app_domain: cms.festigo.es
+
+  # The application name
+  application_name: festiGo
+
+  # The Wufoo form id
+  wufoo_form_id: <%= ENV['WUFOO_FORM_ID'] %>
+
+  #Profile Model min width and height for image
+  route_profile_image_min_width: 200
+  route_profile_image_min_height: 200
+
+development:
+  <<: *defaults
+  app_domain: localhost:3000
+
+test: &testing
+  <<: *defaults
+  app_domain: 127.0.0.1
+#  secret_token: <%= "banana" * 5 %>
+#  mongodb:
+#    database: myapp_test
+
+cucumber:
+  <<: *testing
