@@ -32,16 +32,16 @@
         <div class="container nav-collapse">
           <ul class="nav">
             <% if can? :read, City %>
-              <li><%= link_to t(:'navbar.cities'), cities_path, :class => current_page?(:controller => "/cities") ? "active" : "" %></li>
+              <li><%= link_to t('navbar.cities'), cities_path, :class => current_page?(:controller => "/cities") ? "active" : "" %></li>
             <% end %>
-            <% if can? :read, City %>
-              <%= link_to t(:profiles), route_profiles_path, :class => current_page?(:controller => "/profiles") ? "active" : "" %>
+            <% if can? :read, RouteProfile %>
+              <li><%= link_to t('navbar.route_profiles'), route_profiles_path, :class => current_page?(:controller => "/route_profiles") ? "active" : "" %></li>
             <% end %>
             <% if can? :read, Route %>
               <li><%= link_to t(:'navbar.routes'), routes_path, :class => current_page?(:controller => "/routes") ? "active" : "" %></li>
             <% end %>
             <% if can? :read, Location %>
-              <li><%= link_to t(:'navbar.locations'), locations_path, :class => current_page?(:controller => "/locations") ? "active" : "" %></li>
+              <li><%= link_to t('navbar.locations'), locations_path, :class => current_page?(:controller => "/locations") ? "active" : "" %></li>
 
             <% end %>
           </ul>
@@ -70,7 +70,7 @@
 
             <% else %>
               <li><%= link_to "Log In", new_user_session_path %></li>
-              <li><%= link_to "Register", new_user_registration_path, :class => "last" %></li>
+              <li><%= link_to "Register", register_path, :class => "last" %></li>
             <% end %>
           </ul>
         </div>

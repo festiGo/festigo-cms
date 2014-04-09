@@ -25,6 +25,11 @@ en:
     cities: "Cities"
     routes: "Routes"
     logged_in_as: "Logged in as "
+  home:
+    index:
+      welcome_to: "Welcome to %{name}!"
+      watch_this_movie_to_learn_how_it_works: "Watch this movie to learn how it works"
+      register_button: "Request access to CMS and manage your Festival"
 #  flash:
 #    actions:
 #      create:
@@ -40,6 +45,15 @@ en:
     form:
       select_city_to_use_map: "Please select the network before adding the location"
   activerecord:
+    models:
+      city: City
+      route: Route
+      profile: Profile
+      reward: Reward
+      device: Device
+      location: Location
+      waypoint: Waypoint
+      organization: Organization
     errors:
       models:
         location:

@@ -7,6 +7,7 @@
     user ||= User.new # guest user (not logged in)
     if user.role? :global_admin
       can :manage, :all
+      can :admin
     elsif user.roles.count > 0
       can :manage, City
       cannot [:create, :update, :destroy], City do |city|
@@ -31,6 +32,7 @@
       end
 
     else
+      #Just a regular player
       can :read, Location
     end
     cannot [:create, :update, :destroy], Checkin

@@ -19,6 +19,10 @@ nl:
   activerecord:
     errors:
       models:
+        route_profile:
+          attributes:
+            image:
+              image_minimum_size:
         location:
           attributes:
             image:

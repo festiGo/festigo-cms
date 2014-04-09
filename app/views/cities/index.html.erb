@@ -28,9 +28,9 @@
       <td><%= city.state_province %></td>
       <td><%= city.country_code %></td>
       <td>
-        <%= link_to t(:details), city_path(city), :class => "btn btn-mini" %>
+        <%= link_to t('view_details'), city_path(city), :class => "btn btn-mini" %>
 
-        <% if can? :update, city %>
+        <% if current_user.is_admin? %>
           <%= link_to t(:edit), edit_city_path(city), :class => "btn btn-mini btn-primary" %>
         <% end %>
       </td>

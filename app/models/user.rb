@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
   attr_accessor :login_attributes
   has_many :devices
 
+  scope :global_admins, -> { joins("INNER JOIN roles ON roles.user_id = users.id and roles.name = 'global_admin'") }
+
+  def is_admin?
+    !roles.where(:name => 'global_admin').empty?
+  end
 
   def role? (name, resource = nil)
     if resource.nil?
@@ -26,7 +31,6 @@ class User < ActiveRecord::Base
         !roles.where(:name => name, :authorizable_type => resource.class.name, :authorizable_id => resource.id).empty?
       end
     end
-
   end
 
   def has_active_fb_token?
