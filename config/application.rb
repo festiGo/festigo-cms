@@ -73,5 +73,7 @@ module Gohike
     config.autoload_paths += Dir["#{Rails.root}/app/api/*"]
 
     config.from_file 'Gohike.yml'
+
+    config.i18n.available_locales = [:en, :nl]
   end
 end

@@ -17,8 +17,8 @@ module ImageModel
     end
   end
 
-  MIN_WIDTH = 570
-  MIN_HEIGHT = 380
+  MIN_WIDTH = Rails.configuration.image_min_width
+  MIN_HEIGHT = Rails.configuration.image_min_height
 
   def validate_minimum_image_size
     unless image.blank?

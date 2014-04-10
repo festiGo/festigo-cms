@@ -14,7 +14,7 @@
       <% end %>
 
 
-      <%= f.input :image %>
+      <%= f.input :image, hint: t('.icon_help', width: Rails.configuration.image_min_width, height: Rails.configuration.image_min_height) %>
       <%= f.input :address, :disabled => f.object.new_record?  %>
       <%= f.input :city, :disabled => f.object.new_record? %>
       <%= f.input :postal_code, :disabled => f.object.new_record? %>

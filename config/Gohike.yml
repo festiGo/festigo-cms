@@ -20,6 +20,10 @@ defaults: &defaults
   route_profile_image_min_width: 200
   route_profile_image_min_height: 200
 
+  #Min Width and Height for images in Routes and Locations
+  image_min_width: 570
+  image_min_height: 380
+
 development:
   <<: *defaults
   app_domain: localhost:3000

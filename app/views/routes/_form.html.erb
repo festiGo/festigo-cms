@@ -11,7 +11,9 @@
                      {:include_blank => false},
                      {:disabled => @route.city_id.blank?} %>
       <% end %>
-      <%= f.input :image %>
+      <%= f.input :image, hint: t('.icon_help', width: Rails.configuration.image_min_width, height: Rails.configuration.image_min_height) %>
+        <!-- the hint: wraps the text into a .help-block <p>  -->
+
     </div>
 
     <div class="span9">

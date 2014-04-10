@@ -13,3 +13,27 @@ body {
 @import "rewards";
 @import "translations";
 @import "bootstrap-slider";
+@import "home";
+
+.breadcrumb .active{
+//  Active color for the breadcrumb item
+  color: #cc3333;
+}
+
+ul.toolbar{
+//  To distantiate the UL from the rest of the page
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+//Adds a rounded border around the div
+div.fg_bordered {
+  margin: 15px 0;
+  padding: 39px 19px 14px;
+  *padding-top: 19px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}

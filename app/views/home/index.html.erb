@@ -1,21 +1,26 @@
 <div class="hero-unit">
   <h1>Hello!</h1>
 
-  <p><%= t('.welcome_to', name: Rails.configuration.application_name) %>.</p>
+  <p><%= t('.welcome_to', name: Rails.configuration.application_name) %></p>
 
   <div class="lead">
-    <% if current_user.nil? %>
-    <p class="centered">
-      <a href="<%= register_path %>" class="btn btn-primary btn-large"><%= t('.register_button') %> »</a>
+    <p class="marketing">
+      <%= t('.how_to_get_started') %>
     </p>
-  </div>
-  <% else %>
-    <p>
-      <%= t('.watch_this_movie_to_learn_how_it_works') %>:
-    </p>
-  <% end %>
+    <h3>
+      <ol>
+        <li class="howto"><%= t('.intro1') %></li>
+        <li class="howto"><%= t('.intro2') %></li>
+        <li class="howto"><%= t('.intro3') %></li>
+        <li class="howto"><%= t('.intro4') %></li>
+      </ol>
+    </h3>
 
-  <p class="centered">
-    <iframe src="//player.vimeo.com/video/73848324" width="800" height="451" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-  </p>
+    <% if current_user.nil? %>
+      <p class="centered">
+        <a href="https://festigo.wufoo.com/forms/z1c7bw0m198oos1/" target="_blank" class="btn btn-primary btn-large"><%= t('.register_button') %> »</a>
+      </p>
+    <% end %>
+  </div>
+
 </div>

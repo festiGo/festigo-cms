@@ -4,7 +4,7 @@ class CheckinsController < ApplicationController
   # GET /checkins
   # GET /checkins.json
   def index
-    @checkins = Checkin.all
+    @checkins = Checkin.order("stamp DESC")
 
     respond_to do |format|
       format.html # index.html.erb

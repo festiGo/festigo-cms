@@ -5,9 +5,14 @@
 
     <div class="span9">
       <%= f.association :city, :collection => cities_curated, :include_blank => false %>
-
-      <%= f.input :priority, :input_html=>{ :min=>0, :max =>100} %>
-      <%= f.input :image %>
+      <!-- TODO: here goes a hidden field with the user's organization -->
+      <%- if current_user.is_admin? %>
+        <!--Admins can edit priority -->
+        <%= f.input :priority, :input_html => {:min => 0, :max => 100} %>
+      <%- else %>
+        <%= hidden_field_tag :priority, 0 %>
+      <%- end %>
+      <%= f.input :image, hint: t('.icon_help', width: Rails.configuration.route_profile_image_min_width, height: Rails.configuration.route_profile_image_min_height) %>
     </div>
     <div class="span9">
 

@@ -1,13 +1,9 @@
 <%- model_class = City -%>
 <ul class="breadcrumb">
-  <li><%= link_to t(:home), home_path %> <span class="divider">/</span></li>
+  <li><%= link_to t('home.title'), home_path %> <span class="divider">/</span></li>
   <li class="active"><%= t(:'navbar.cities') %></li>
-  <% if can? :read, RouteProfile %>
-    <li class="pull-right"><%= link_to t(:profiles), route_profiles_path, :class => "profiles btn btn-mini btn-primary pull-right" %></li>
-
-  <% end %>
   <% if can? :create, City %>
-    <li class="pull-right"><%= link_to t(:add_city), new_city_path, :class => "add-city btn btn-mini btn-success pull-right" %></li>
+    <li class="pull-right"><%= link_to t('.add_city'), new_city_path, :class => "add-city btn btn-mini btn-success pull-right" %></li>
 
   <% end %>
 </ul>
@@ -28,10 +24,10 @@
       <td><%= city.state_province %></td>
       <td><%= city.country_code %></td>
       <td>
-        <%= link_to t('view_details'), city_path(city), :class => "btn btn-mini" %>
+        <%= link_to t('actions.view_details'), city_path(city), :class => "btn btn-mini" %>
 
         <% if current_user.is_admin? %>
-          <%= link_to t(:edit), edit_city_path(city), :class => "btn btn-mini btn-primary" %>
+          <%= link_to t('actions.edit', name: model_class.model_name), edit_city_path(city), :class => "btn btn-mini btn-primary" %>
         <% end %>
       </td>
     </tr>

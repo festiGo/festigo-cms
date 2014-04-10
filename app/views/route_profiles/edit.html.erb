@@ -1,10 +1,9 @@
 <ul class="breadcrumb">
-  <li><%= link_to t(:home) , home_path %> <span class="divider">/</span></li>
+  <li><%= link_to t('home.title') , home_path %> <span class="divider">/</span></li>
   <li><%= link_to t(:'navbar.route_profiles') , route_profiles_path %> <span class="divider">/</span></li>
-  <li class="active"><%= t(:edit) + ' "' + @route_profile.name + '"'%></li>
+  <li class="active"><%= t('actions.edit', name: @route_profile.name) %></li>
 </ul>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', route_profiles_path() %> |
-<%= link_to 'Back', route_profiles_path %>
+<%= link_to t('common.back'), route_profiles_path %>

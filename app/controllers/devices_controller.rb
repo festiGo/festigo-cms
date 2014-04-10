@@ -4,6 +4,7 @@ class DevicesController < ApplicationController
   # GET /devices
   # GET /devices.json
   def index
+    authorize! :supervise, :all
     @devices = Device.all
 
     respond_to do |format|
@@ -15,6 +16,7 @@ class DevicesController < ApplicationController
   # GET /devices/1
   # GET /devices/1.json
   def show
+    authorize! :supervise, :all
     @device = Device.find(params[:id])
 
     respond_to do |format|

@@ -17,11 +17,11 @@
 
 <p>
   <b>User:</b>
-  <%= link_to @checkin.device.user.email, @checkin.device.user unless @checkin.device.user.nil?  %>
+  <%= link_to @checkin.device.user.email, admin_show_users_path(@checkin.device.user) unless @checkin.device.user.nil?  %>
 </p>
 
 <p>
-  <b>Stamp:</b>
+  <b>Timestamp:</b>
   <%= @checkin.stamp %>
 </p>
 

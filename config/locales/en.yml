@@ -20,16 +20,68 @@ en:
   waypoint_instructions: "On the right is a list of all locations available, which are not yet included in this route. On the left are the locations which will be included in the route and meant to be traveled in the exact order they are defined. To add a location as a waypoint just drag it from right to left and release in the desired location. Waypoints can be re-ordered in the same manner."
   navbar:
     company_name: "festiGo"
-    route_profiles: "Profiles"
+    route_profiles: Events
     locations: "Locations"
     cities: "Cities"
     routes: "Routes"
     logged_in_as: "Logged in as "
+    admin: Admin
+  devise:
+    shared:
+      signin_links:
+        register_button: "Request access to CMS and publish your Event"
+  #        Common strings
+  common:
+    in: in
+    back: back
+    delete_confirmation: 'This action cannot be undone. Confirm deletion?'
+  #    Action Strings used in buttons everywhere
+  actions:
+    view_details: View Details
+    view_and_edit: View and Edit Details
+    delete: Delete %{name}
+    edit: Edit %{name}
+    add_language: Add Language
+  # Views
   home:
+    title: Home
     index:
       welcome_to: "Welcome to %{name}!"
       watch_this_movie_to_learn_how_it_works: "Watch this movie to learn how it works"
-      register_button: "Request access to CMS and manage your Festival"
+      register_button: "Request access to CMS and publish your Event"
+      how_to_get_started: "How to get started:"
+      intro1: Create your Event
+      intro2: Add the locations
+      intro3: Build routes for visitors
+      intro4: Publish!
+  cities:
+    index:
+      add_city: Add City
+    show:
+      view_festivals_in: "View Events in %{city}"
+  route_profiles:
+    index:
+      add_profile: Create New Event
+    show:
+      details: "Event Details"
+      routes_in_this_profile: Routes in this Event
+    form:
+      icon_help: The icon should be at least %{height} pixels tall and %{width} pixels wide
+  routes:
+    index:
+      add_route: Make a New Route
+    form:
+      icon_help: The icon should be at least %{height} pixels tall and %{width} pixels wide
+  locations:
+    new:
+      title: "Add Location"
+    index:
+      add_location: Add a New Location
+    show:
+      details: Location Details
+    form:
+      select_city_to_use_map: Select a city in order to enable the map
+      icon_help: The image should be at least %{height} pixels tall and %{width} pixels wide
 #  flash:
 #    actions:
 #      create:
@@ -39,27 +91,49 @@ en:
 #      destroy:
 #        notice: "{resource_name} was successfully destroyed"
 #        alert: "{resource_name} could not be destroyed"
-  locations:
-    new:
-      title: "Add Location"
-    form:
-      select_city_to_use_map: "Please select the network before adding the location"
+
+  #ActiveRecord translations
   activerecord:
     models:
       city: City
       route: Route
-      profile: Profile
+      route_profile: Event
       reward: Reward
       device: Device
       location: Location
       waypoint: Waypoint
       organization: Organization
+    attributes:
+      city:
+        name: City Name
+        state_province: State or Province
+        country_code: Country Code
+      route:
+        name: Route Name
+        image: Icon
+        route_profile: Event
+        translations: Languages
+        waypoints: Locations
+        route_profile_id: Event
+      route_profile:
+        image: Icon
+        name: Event Name
+        city: City
+        translations: Languages
+      location:
+        image: Photo
+        name: Location Name
+        address: Address
+        postal_code: Postal Code
+        translations: Languages
+        network: City
+
     errors:
       models:
         location:
           attributes:
             image:
-              image_minimum_size: "The picture is below the minimum size. (570x380 pixel for pictures, 480x480 for rewards)"
+              image_minimum_size: "The picture is below the minimum size."
         route:
           attributes:
             base:
