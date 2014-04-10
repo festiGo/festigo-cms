@@ -1,6 +1,9 @@
 require 'api'
 Gohike::Application.routes.draw do
 
+  resources :organizations
+
+
   root :to => "home#index"
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
@@ -9,11 +12,10 @@ Gohike::Application.routes.draw do
     get '/translation/:resource_type/:resource_id(/:target_locale)', :to => "translations#new", :as => :translation
 
     get "start", :to => "start#index"
-    get "register", :to => "start#register"
 
     get "admin/index"
     get "admin/users"
-    get "admin/users/:id", :to => 'admin#show_user', :as => :user
+
 
     get "home", :to => "home#index"
 
@@ -55,6 +57,10 @@ Gohike::Application.routes.draw do
     end
     resources :devices
     devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations: "registrations"}
+    match 'users/profile' => 'users#profile'
+    scope "/admin" do
+      resources :users
+    end
 
 
   end

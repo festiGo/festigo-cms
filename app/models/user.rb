@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :logins, :class_name => 'UserProvider', :foreign_key => :user_id, :dependent => :delete_all
   attr_accessor :login_attributes
   has_many :devices
+  belongs_to :organization
 
   scope :global_admins, -> { joins("INNER JOIN roles ON roles.user_id = users.id and roles.name = 'global_admin'") }
 

@@ -1,0 +1,7 @@
+<ul class="breadcrumb">
+  <li><%= link_to t('home.title') , home_path %> <span class="divider">/</span></li>
+  <li><%= link_to t('activerecord.models.organization') , organizations_path %> <span class="divider">/</span></li>
+  <li><%= link_to @organization.name , organization_path(@organization) %></li>
+</ul>
+
+<%= render 'shared/crop', :resource => @organization %>

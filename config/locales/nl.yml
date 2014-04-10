@@ -24,7 +24,7 @@ nl:
     locations: "Locations"
     cities: "Cities"
     routes: "Routes"
-    logged_in_as: "Logged in as "
+    logged_in_as: "Logged in as %{email}"
   devise:
     shared:
       signin_links:

@@ -1,4 +1,4 @@
-class AdminController < ApplicationController
+class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -11,15 +11,20 @@ class AdminController < ApplicationController
 
   def index
     authorize! :supervise, :all
-  end
-
-  def users
-    authorize! :supervise, :all
     @users = User.all
   end
 
-  def show_user
+  def show
     authorize! :supervise, :all
-    @user = User.find_by_id(:user_id)
+    @user = User.find(params[:id])
+  end
+
+  def new
+    authorize! :supervise, :all
+
+  end
+
+  def profile
+    @user = User.find(current_user.id)
   end
 end
