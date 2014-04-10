@@ -1,3 +1,10 @@
+<ul class="breadcrumb">
+  <li><%= link_to t('home.title'), home_path %><span class="divider">/</span></li>
+  <li class=""><%= link_to t(:'navbar.admin') , admin_index_path %><span class="divider">/</span></li>
+  <li class=""><%= link_to t(:'navbar.organizations'), organizations_path %><span class="divider">/</span></li>
+  <li class="active"><%= @organization.name %></li>
+</ul>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -7,7 +14,7 @@
 
 <p>
   <b>Icon:</b>
-  <%= image_tag @organization.image %>
+  <%= image_tag @organization.image.icon %>
 </p>
 
 

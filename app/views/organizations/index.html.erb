@@ -1,25 +1,30 @@
-<h1>Listing organizations</h1>
+<ul class="breadcrumb">
+  <li><%= link_to t('home.title'), home_path %><span class="divider">/</span></li>
+  <li class=""><%= link_to t(:'navbar.admin') , admin_index_path %><span class="divider">/</span></li>
+  <li class="active"><%= t(:'navbar.organizations') %></li>
+</ul>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Icon</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<ul class="toolbar inline">
+  <!-- toolbar with large action buttons -->
+  <% if can? :create, Organization %>
+    <li><%= link_to t('.add_organization'), new_organization_path, :class => "btn btn-success" %></li>
+  <% end %>
+</ul>
+
+<table class="table table-striped">
+  <thead>
+    <th class="organization">Icon</th>
+    <th class="organization">Name</th>
+    <th class="organization"></th>
+    <th class="organization"></th>
+  </thead>
 
 <% @organizations.each do |organization| %>
   <tr>
-    <td><%= organization.name %></td>
-    <td><%= organization.image %></td>
-    <td><%= link_to 'Show', organization %></td>
-    <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
-    <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td class="organization"><%= image_tag organization.image.icon, size: "50x50" %></td>
+    <td class="organization"><%= organization.name %></td>
+    <td class="organization"><%= link_to 'Show', organization %></td>
+    <td class="organization"><%= link_to 'Edit', edit_organization_path(organization) %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Organization', new_organization_path %>

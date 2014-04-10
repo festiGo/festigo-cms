@@ -26,6 +26,7 @@ en:
     routes: "Routes"
     logged_in_as: "Logged in as %{email}"
     admin: Admin
+    organizations: Organizations
   devise:
     shared:
       signin_links:
