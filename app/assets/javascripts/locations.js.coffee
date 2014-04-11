@@ -63,9 +63,18 @@ jQuery ->
       e.preventDefault()
       e.stopPropagation()
       request = {address: $(this).val() }
-      geocoder = new google.maps.Geocoder()
-      map = Gmaps.map.map
-      geocoder.geocode request, (results, status) ->
-        best_result = results[0]
-        if status == google.maps.GeocoderStatus.OK and best_result
-          map.setCenter(best_result.geometry.location)
+      googleRequest(request)
+
+  $("#address-search-button").on 'click', (e) ->
+    e.preventDefault()
+    request = {address: $(".search-map").val() }
+    googleRequest(request)
+
+  googleRequest = (request) ->
+    geocoder = new google.maps.Geocoder()
+    map = Gmaps.map.map
+    geocoder.geocode request, (results, status) ->
+      best_result = results[0]
+      if status == google.maps.GeocoderStatus.OK and best_result
+        map.setCenter(best_result.geometry.location)
+

@@ -37,6 +37,7 @@ class LocationsController < InheritedResources::Base
   end
 
   def search
-    @locations = @locations.where("id NOT IN (:exclude) AND (name ILIKE :term OR description ILIKE :term OR address ILIKE :term)", {:term => "%#{params[:term]}%", :exclude => params[:exclude].split(",")})
+    exclude_value =  params[:exclude].split(",") == [] ? 0 : params[:exclude].split(",")
+    @locations = @locations.where("id NOT IN (:exclude) AND (name ILIKE :term OR description ILIKE :term OR address ILIKE :term)", {:term => "%#{params[:term]}%", :exclude => exclude_value})
   end
 end

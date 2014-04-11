@@ -22,7 +22,7 @@
       <%= f.input :longitude, :as => :string, :input_html => {:readonly => true} %>
     </div>
     <div class="span5">
-      <%= search_field_tag :search_map, nil, :placeholder => t(:search_map), :class => "search-map", :disabled => f.object.new_record? %>
+      <%= search_field_tag :search_map, nil, :placeholder => t(:search_map), :class => "search-map", :disabled => f.object.new_record? %><a href="#" class="btn btn-mini btn-primary" id="address-search-button"><%= t('.search') %></a>
       <div class="location-map">
 
         <% options = {
