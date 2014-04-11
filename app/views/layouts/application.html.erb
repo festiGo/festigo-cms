@@ -92,6 +92,7 @@
 
 <div id="footer">
   <div class="container">
+    <div class="pull-right"><p><%= link_to t('support_contact'), "mailto:#{Rails.configuration.support_email}" %></p></div>
     <p class="muted credit">&copy; <%= Time.now().strftime("%Y") %> FestiGo</p>
   </div>
 </div>

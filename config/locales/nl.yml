@@ -12,6 +12,7 @@ nl:
   republish: "Re-Publish"
   search_available: "Search Locations"
   search_map: "Type in an address here if you have it"
+  support_contact: "Help and Support"
   omniauth:
     facebook:
       success: "Successfully connected Facebook"
