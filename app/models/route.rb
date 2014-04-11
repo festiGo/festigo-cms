@@ -29,6 +29,11 @@ class Route < ActiveRecord::Base
   after_update :crop_image
   validate :validate_minimum_image_size
   validates_presence_of :name, :description, :city_id, :route_profile_id, :image
+  before_update :update_organization
+
+  def update_organization
+    self.organization_id = self.route_profile.organization.id
+  end
 
 
   def validate_for_publishing

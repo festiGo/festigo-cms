@@ -30,13 +30,12 @@ class RoutesController < InheritedResources::Base
 
   def index
     if current_user.is_admin?
-      @manageable_routes = Route.all
+      @manageable_routes = @routes
       @other_routes = []
     else
-      @manageable_routes = Route.find_by_organization_id(current_user.organization.organization_id)
-      @other_routes = Route.all - @manageable_routes
+      @manageable_routes = current_user.organization.routes
+      @other_routes = @routes - @manageable_routes
     end
-
   end
 
   def waypoints

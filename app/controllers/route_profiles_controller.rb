@@ -9,9 +9,16 @@ class RouteProfilesController < InheritedResources::Base
   has_scope :in_city
 
   before_filter :load_routes, :only => :show
+  before_filter :load_organizations, :only => [:new, :edit]
 
   def index
-    super
+    if current_user.is_admin?
+      @my_route_profiles = @route_profiles
+      @other_route_profiles = []
+    else
+      @my_route_profiles = current_user.organization.route_profiles
+      @other_route_profiles = @route_profiles - @my_route_profiles
+    end
   end
 
   def in_cities
@@ -44,6 +51,10 @@ class RouteProfilesController < InheritedResources::Base
   private
   def load_routes
     @routes = @route_profile.routes
+  end
+
+  def load_organizations
+    @managed_organizations = Organization.manageable_by_user(current_user)
   end
 
 end

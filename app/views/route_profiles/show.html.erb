@@ -27,8 +27,14 @@
 
     <div class="tab-content">
       <div class="tab-pane active" id="<%= translation_tab_id(@route_profile, locale) %>">
-        <h5><%= model_class.human_attribute_name(:name) %></h5>
-        <%= @route_profile.name %>
+        <p>
+          <b><%= model_class.human_attribute_name(:name) %>:</b>
+          <%= @route_profile.name %>
+        </p>
+        <p>
+          <b><%= model_class.human_attribute_name(:organization) %>:</b>
+          <%= @route_profile.organization.name %>
+        </p>
       </div>
       <% @route_profile.translations.each do |translation| %>
         <%= render :partial => "shared/translation_values", :locals => {:translation => translation, :resource => @route_profile} %>
@@ -38,7 +44,7 @@
   </div>
   <div class="span5">
     <h4><%= model_class.human_attribute_name(:icon) %>
-      <%= link_to t('actions.delete', model_class.model_name), @route_profile, method: :delete, data: {confirm: t('common.delete_confirmation')}, :class => "btn btn-mini btn-danger pull-right" if @route_profile.routes.empty? %>
+      <%= link_to t('actions.delete', name: t('activerecord.models.route_profile')), @route_profile, method: :delete, data: {confirm: t('common.delete_confirmation')}, :class => "btn btn-mini btn-danger pull-right" if @route_profile.routes.empty? %>
       <%= link_to t(:crop), crop_route_profile_path(@route_profile), :class => "btn btn-mini pull-right" unless @route_profile.image.blank? %>
     </h4>
     <img style="width: 100px; height: 100px;" src="<%= @route_profile.image.icon %>?<%= Time.now.to_i %>">
@@ -46,5 +52,5 @@
 </div>
 <div class="container">
   <h4><%= t('.routes_in_this_profile') %> </h4>
-  <%= render :partial => "routes/listing", :locals => {} %>
+  <%= render :partial => "routes/listing", :locals => {:routes => @routes} %>
 </div>

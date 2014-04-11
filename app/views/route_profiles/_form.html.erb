@@ -5,6 +5,7 @@
 
     <div class="span9">
       <%= f.association :city, :collection => cities_curated, :include_blank => false %>
+      <%= f.association :organization, :collection => @managed_organizations, :include_blank => false %>
       <!-- TODO: here goes a hidden field with the user's organization -->
       <%- if current_user.is_admin? %>
         <!--Admins can edit priority -->

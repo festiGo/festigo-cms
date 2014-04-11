@@ -26,7 +26,7 @@
         <td class="organization"><%= route.translated_locales.join(" | ") %></td>
         <td class="organization"><%= route.waypoints.count %></td>
         <td class="organization"><%= route.organization.name %></td>
-        <td>
+        <td class="organization">
           <%- if can? :manage, route %>
             <%= link_to t('actions.view_and_edit'), route_path(route), :class => "btn" %>
           <%- else %>
@@ -36,4 +36,12 @@
       </tr>
     <% end %>
   </table>
+  <% if routes.empty? %>
+    <div class="text-center">
+      <%= link_to t('locations.index.add_location'), new_location_path, { :class => 'btn btn-success'} %> &nbsp; <%= t('common.or') %> &nbsp;
+      <%= link_to t('routes.index.add_route'), new_route_path, { :class => 'btn btn-success'} %>
+
+    </div>
+  <% end %>
+
 </div>

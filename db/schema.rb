@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140411081341) do
+ActiveRecord::Schema.define(:version => 20140411203152) do
 
   create_table "checkins", :force => true do |t|
     t.integer  "route_id"
@@ -143,12 +143,13 @@ ActiveRecord::Schema.define(:version => 20140411081341) do
   create_table "route_profiles", :force => true do |t|
     t.string   "name"
     t.string   "image"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.boolean  "is_publishable"
     t.integer  "city_id"
     t.string   "image_icon_md5"
-    t.integer  "priority",       :default => 0
+    t.integer  "priority",        :default => 0
+    t.integer  "organization_id"
   end
 
   create_table "route_translations", :force => true do |t|

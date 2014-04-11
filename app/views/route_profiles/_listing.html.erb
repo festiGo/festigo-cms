@@ -13,7 +13,7 @@
       <th></th>
     </tr>
     </thead>
-    <% @route_profiles.each do |route_profile| %>
+    <% route_profiles.each do |route_profile| %>
       <tr>
         <td><img src="<%= route_profile.image.icon %>" class="route-list-img"></td>
         <td class="name"><%= link_to route_profile.name, route_profile_path(route_profile) %></td>

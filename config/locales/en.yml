@@ -34,6 +34,7 @@ en:
         register_button: "Request access to CMS and publish your Event"
   # Common strings
   common:
+    or: or
     in: in
     back: back
     delete_confirmation: 'This action cannot be undone. Confirm deletion?'
@@ -70,6 +71,8 @@ en:
       routes_in_this_profile: Routes in this Event
     form:
       icon_help: The icon should be at least %{height} pixels tall and %{width} pixels wide
+    new:
+      new: "New %{name}"
   routes:
     index:
       add_route: Make a New Route
@@ -134,6 +137,7 @@ en:
         name: Event Name
         city: City
         translations: Languages
+        organization: Publisher
       location:
         image: Photo
         name: Location Name

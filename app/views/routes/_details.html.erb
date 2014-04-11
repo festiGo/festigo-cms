@@ -1,13 +1,12 @@
+<% if @publish_messages != nil
+     @publish_messages.each do |message| %>
+    <div class="alert alert-info">
+      <%= message %>
+    </div>
+  <% end
+     end %>
 <h4 id="route_details">
   <%= t(:details) %>
-  <% if @publish_messages != nil
-     @publish_messages.each do |message| %>
-      Validation Errors:
-      <div class="alert alert-info">
-        <%= message %>
-      </div>
-    <% end
-       end %>
   <% if can? :publish, @route %>
     <%
        class_attr = "publish btn btn-success pull-right"

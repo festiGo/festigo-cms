@@ -1,7 +1,7 @@
 <ul class="breadcrumb">
   <li><%= link_to t('home.title') , home_path %> <span class="divider">/</span></li>
   <li><%= link_to t(:'navbar.route_profiles') , route_profiles_path %> <span class="divider">/</span></li>
-  <li class="active"><%=t(:new_route_profile) %></li>
+  <li class="active"><%=t(".new", name: t('activerecord.models.route_profile')) %></li>
 </ul>
 
 <%= render 'form' %>
