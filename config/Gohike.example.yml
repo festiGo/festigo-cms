@@ -31,6 +31,9 @@ development:
   <<: *defaults
   app_domain: localhost:3000
 
+production:
+  <<: *defaults
+
 test: &testing
   <<: *defaults
   app_domain: 127.0.0.1
