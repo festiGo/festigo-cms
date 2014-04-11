@@ -1,3 +1,4 @@
+<%- model_class = Route %>
 <ul class="breadcrumb">
   <li><%= link_to t('home.title'), home_path %> <span class="divider">/</span></li>
   <li><%= link_to t(:'navbar.routes'), routes_path %> <span class="divider">/</span></li>
@@ -5,8 +6,7 @@
 </ul>
 <div class="row-fluid">
 
-
-  <%= render :partial => "details" %>
+  <%= render :partial => "details" %>  <!-- This contains only the header -->
 
   <ul class="nav nav-tabs translations-tabs">
     <%= render :partial => "shared/translation_tabs", :locals => {:locale => I18n.locale, :resource => @route, :active => true} %>
@@ -17,9 +17,20 @@
 
   <div class="tab-content">
     <div class="tab-pane active" id="<%= translation_tab_id(@route, locale) %>">
-      <h5><%= @route.name %></h5>
+      <p>
+        <b><%= model_class.human_attribute_name(:name) %>:</b>
+        <%= @route.name %>
+      </p>
 
-      <p><%= @route.description %></p>
+      <p>
+        <b><%= model_class.human_attribute_name(:description) %>:</b>
+        <%= @route.description %>
+      </p>
+
+      <p>
+        <b><%= model_class.human_attribute_name(:organization) %>:</b>
+        <%= @route.organization.name %>
+      </p>
     </div>
     <% @route.translations.each do |translation| %>
       <%= render :partial => "shared/translation_values", :locals => {:translation => translation, :resource => @route} %>
@@ -32,19 +43,26 @@
 
   <h4>
     <%= t :icon_and_image %>
-    <%= link_to t(:delete_route), route_path(@route), :method => :delete, :confirm => :are_you_sure, :class => "btn btn-mini btn-danger pull-right" %>
-    <%= link_to t(:crop), crop_route_path(@route), :class => "btn btn-mini pull-right" %>
   </h4>
-  <img style="width: 285px; height: 190px;" src="<%= @route.image.mobile %>?<%= Time.now.to_i %>">
-  <img style="width: 100px; height: 100px;" src="<%= @route.image.icon %>?<%= Time.now.to_i %>">
+  <ul class="thumbnails">
+    <li><img style="width: 285px; height: 190px;" src="<%= @route.image.mobile %>?<%= Time.now.to_i %>"></li>
+    <li><img style="width: 100px; height: 100px;" src="<%= @route.image.icon %>?<%= Time.now.to_i %>"></li>
+  </ul>
 </div>
+<div class="row well">
+  <ul class="toolbar inline">
+    <li><%= link_to t(:crop), crop_route_path(@route), :class => "btn" %></li>
+    <li><%= link_to t('actions.edit', name: model_class.model_name), edit_route_path(@route), :class => "btn btn-primary" %></li>
+    <li><%= link_to t('actions.delete', name: model_class.model_name), route_path(@route), :method => :delete, :confirm => :are_you_sure, :class => "btn btn-danger" %></li>
+  </ul>
 
+</div>
 <div class="row-fluid">
-  <h4><%= t :waipoints %>
+  <h4><%= t ('.locations') %>
     <span class="waypoint-info icon-question-sign" data-content="<%= t(:waypoint_instructions) %>"></span></h4>
 
   <div class="pull-left half">
-    <h6><%= t :included %></h6>
+    <h5><%= t('.included_locations') %></h5>
 
     <ul class="connected waypoint-list clearfix " id="waypoints">
       <% @route.waypoints.each do |waypoint| %>
@@ -55,6 +73,7 @@
     </ul>
   </div>
   <div class="pull-right half">
+    <h5><%= t('.excluded_locations') %></h5>
     <%= search_field_tag :search_location, nil, :placeholder => t(:search_available), :class => "search-locations", :data => {"search-url" => search_city_locations_path(@route.city)} %>
     <ul class="connected waypoint-list clearfix" id="locations">
       <% @locations.each do |location| %>

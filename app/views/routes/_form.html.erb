@@ -11,8 +11,12 @@
                      {:include_blank => false},
                      {:disabled => @route.city_id.blank?} %>
       <% end %>
+      <%= f.input :organization_id do %>
+        <%= f.select :organization_id, options_from_collection_for_select(@organizations, :id, :name),
+                     {:include_blank => false} %>
+      <% end %>
       <%= f.input :image, hint: t('.icon_help', width: Rails.configuration.image_min_width, height: Rails.configuration.image_min_height) %>
-        <!-- the hint: wraps the text into a .help-block <p>  -->
+      <!-- the hint: wraps the text into a .help-block <p>  -->
 
     </div>
 

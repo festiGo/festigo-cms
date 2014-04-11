@@ -7,7 +7,7 @@ nl:
   de: "Duits"
   fi: "Fins"
   es: "Spaans"
-  publish: "Un-Publish"
+  unpublish: "Un-Publish"
   publish: "Publish"
   republish: "Re-Publish"
   search_available: "Search Locations"
@@ -25,15 +25,18 @@ nl:
     cities: "Cities"
     routes: "Routes"
     logged_in_as: "Logged in as %{email}"
+    admin: Admin
+    organizations: Organizations
   devise:
     shared:
       signin_links:
         register_button: "Request access to CMS and publish your Event"
-  #        Common strings
+  # Common strings
   common:
     in: in
     back: back
     delete_confirmation: 'This action cannot be undone. Confirm deletion?'
+    not_allowed: You are not authorized to access this page
   #    Action Strings used in buttons everywhere
   actions:
     view_details: View Details
@@ -69,16 +72,27 @@ nl:
   routes:
     index:
       add_route: Make a New Route
+      manageable_routes: Routes you can manage
+      other_routes: Other Routes
     form:
       icon_help: The icon should be at least %{height} pixels tall and %{width} pixels wide
+    published_ok: "Route is now published"
+    unpublished_ok: "Route is not published anymore"
+    show:
+      locations: Locations
+      included_locations: Locations in this Route
+      excluded_locations: Available Locations in this City
   locations:
+    new:
+      title: "Add Location"
     index:
       add_location: Add a New Location
     show:
       details: Location Details
     form:
+      address-search-button: Search
+      select_city_to_use_map: Select a city in order to enable the map
       icon_help: The image should be at least %{height} pixels tall and %{width} pixels wide
-
 #  flash:
 #    actions:
 #      create:
@@ -88,11 +102,7 @@ nl:
 #      destroy:
 #        notice: "{resource_name} was successfully destroyed"
 #        alert: "{resource_name} could not be destroyed"
-  locations:
-    new:
-      title: "Add Location"
-    form:
-      select_city_to_use_map: "Please select the network before adding the location"
+
   #ActiveRecord translations
   activerecord:
     models:
@@ -103,7 +113,7 @@ nl:
       device: Device
       location: Location
       waypoint: Waypoint
-      organization: Organization
+      organization: Publisher
     attributes:
       city:
         name: City Name
@@ -116,6 +126,8 @@ nl:
         translations: Languages
         waypoints: Locations
         route_profile_id: Event
+        organization: Publisher
+        organization_id: Publisher
       route_profile:
         image: Icon
         name: Event Name
@@ -127,6 +139,10 @@ nl:
         address: Address
         postal_code: Postal Code
         translations: Languages
+        network: City
+      organization:
+        name: Name
+        image: Logo
 
     errors:
       models:

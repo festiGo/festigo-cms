@@ -5,6 +5,7 @@ class RoutesController < InheritedResources::Base
   load_and_authorize_resource
   before_filter :load_locations, :only => :show
   before_filter :load_profiles, :except => [:index, :destroy, :show]
+  before_filter :load_organizations, :except => [:index, :destroy, :show, :publish, :unpublish]
   has_scope :in_city
 
   # POST /routes
@@ -27,6 +28,16 @@ class RoutesController < InheritedResources::Base
     end
   end
 
+  def index
+    if current_user.is_admin?
+      @manageable_routes = Route.all
+      @other_routes = []
+    else
+      @manageable_routes = Route.find_by_organization_id(current_user.organization.organization_id)
+      @other_routes = Route.all - @manageable_routes
+    end
+
+  end
 
   def waypoints
     to_preserve = []
@@ -53,13 +64,14 @@ class RoutesController < InheritedResources::Base
       $redis.del delete_published_key if $redis.exists(delete_published_key)
       $redis.set published_key, route_json
       @route.update_attribute :published_key, published_key
+      @publish_messages = [t('routes.published_ok')]
       render :partial => "details"
     else
       logger.warn "Validation Errors in Route #{@route.id}"
       errors.messages.each do |attribute, error|
         logger.warn error
       end
-      @validation_errors = errors.messages
+      @publish_messages = errors.values
       render :partial => "details"
     end
 
@@ -69,6 +81,7 @@ class RoutesController < InheritedResources::Base
   def unpublish
     $redis.del @route.published_key
     @route.update_attribute :published_key, nil
+    @publish_messages = [t('routes.unpublished_ok')]
     render :partial => "details"
   end
 
@@ -85,6 +98,10 @@ class RoutesController < InheritedResources::Base
     else
       @profiles = []
     end
+  end
+
+  def load_organizations
+    @organizations = Organization.manageable_by_user(current_user)
   end
 end
 

@@ -7,7 +7,7 @@ en:
   nl: "Dutch"
   fi: "Finnish"
   es: "Spanish"
-  publish: "Un-Publish"
+  unpublish: "Un-Publish"
   publish: "Publish"
   republish: "Re-Publish"
   search_available: "Search Locations"
@@ -72,8 +72,16 @@ en:
   routes:
     index:
       add_route: Make a New Route
+      manageable_routes: Routes you can manage
+      other_routes: Other Routes
     form:
       icon_help: The icon should be at least %{height} pixels tall and %{width} pixels wide
+    published_ok: "Route is now published"
+    unpublished_ok: "Route is not published anymore"
+    show:
+      locations: Locations
+      included_locations: Locations in this Route
+      excluded_locations: Available Locations in this City
   locations:
     new:
       title: "Add Location"
@@ -82,6 +90,7 @@ en:
     show:
       details: Location Details
     form:
+      address-search-button: Search
       select_city_to_use_map: Select a city in order to enable the map
       icon_help: The image should be at least %{height} pixels tall and %{width} pixels wide
 #  flash:
@@ -104,7 +113,7 @@ en:
       device: Device
       location: Location
       waypoint: Waypoint
-      organization: Organization
+      organization: Publisher
     attributes:
       city:
         name: City Name
@@ -117,6 +126,8 @@ en:
         translations: Languages
         waypoints: Locations
         route_profile_id: Event
+        organization: Publisher
+        organization_id: Publisher
       route_profile:
         image: Icon
         name: Event Name
@@ -129,6 +140,9 @@ en:
         postal_code: Postal Code
         translations: Languages
         network: City
+      organization:
+        name: Name
+        image: Logo
 
     errors:
       models:

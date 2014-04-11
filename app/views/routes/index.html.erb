@@ -11,6 +11,8 @@
 </ul>
 <%= render :partial => "shared/city_tabs", :locals => {} %>
 
-<%= render :partial => "routes/listing", :locals => {:skip_profile => false} %>
+<h3><%= t('.manageable_routes') %></h3>
+<%= render :partial => "routes/listing", :locals => {:skip_profile => false, :routes => @manageable_routes} %>
 
-
+<h3><%= t('.other_routes') %></h3>
+<%= render :partial => "routes/listing", :locals => {:skip_profile => false, :routes => @other_routes} %>

@@ -10,4 +10,13 @@ class Organization < ActiveRecord::Base
   after_update :crop_image
 
   has_many :users
+  has_many :routes
+
+  def self.manageable_by_user(user)
+    if user.is_admin?
+      return Organization.all
+    else
+      return [user.organization]
+    end
+  end
 end

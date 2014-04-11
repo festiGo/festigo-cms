@@ -3,6 +3,7 @@
   <table class="table table-striped">
     <thead>
     <tr>
+      <th><%= model_class.human_attribute_name(:published) %></th>
       <th><%= model_class.human_attribute_name(:image) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <% unless @route_profile.present? %>
@@ -10,18 +11,21 @@
       <% end %>
       <th><%= model_class.human_attribute_name(:translations) %></th>
       <th><%= model_class.human_attribute_name(:waypoints) %></th>
+      <th><%= model_class.human_attribute_name(:organization) %></th>
       <th></th>
     </tr>
     </thead>
-    <% @routes.each do |route| %>
+    <% routes.each do |route| %>
       <tr>
-        <td><img src="<%= route.image.icon %>" class="route-list-img"></td>
-        <td class="name"><%= link_to route.name, route_path(route) %></td>
+        <td class="organization"><%= route_published_bullet(route.published_key.present?) %></td>
+        <td class="organization"><img src="<%= route.image.icon %>" class="route-list-img"></td>
+        <td class="organization"><%= link_to route.name, route_path(route) %></td>
         <% unless @route_profile.present? %>
-          <td class="profile"><%= link_to route.route_profile.name, route_profile_path(route.route_profile) if route.route_profile.present? %></td>
+          <td class="organization"><%= link_to route.route_profile.name, route_profile_path(route.route_profile) if route.route_profile.present? %></td>
         <% end %>
-        <td class="translations"><%= route.translated_locales.join(" | ") %></td>
-        <td><%= route.waypoints.count %></td>
+        <td class="organization"><%= route.translated_locales.join(" | ") %></td>
+        <td class="organization"><%= route.waypoints.count %></td>
+        <td class="organization"><%= route.organization.name %></td>
         <td>
           <%- if can? :manage, route %>
             <%= link_to t('actions.view_and_edit'), route_path(route), :class => "btn" %>
