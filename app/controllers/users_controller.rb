@@ -17,6 +17,8 @@ class UsersController < ApplicationController
   def show
     authorize! :supervise, :all
     @user = User.find(params[:id])
+    @devices = @user.devices
+    @checkins = @user.my_checkins
   end
 
   def new

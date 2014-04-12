@@ -34,9 +34,9 @@ en:
         register_button: "Request access to CMS and publish your Event"
   # Common strings
   common:
+    back: Back
     or: or
     in: in
-    back: back
     delete_confirmation: 'This action cannot be undone. Confirm deletion?'
     not_allowed: You are not authorized to access this page
   #    Action Strings used in buttons everywhere

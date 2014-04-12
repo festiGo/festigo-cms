@@ -1,2 +1,23 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%- model_class = User %>
+<h1>User</h1>
+
+<div class="row">
+  <fieldset>
+    <dl class="dl-horizontal">
+      <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+      <dd><%= @user.email %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><strong><%= model_class.human_attribute_name(:organization) %>:</strong></dt>
+      <dd><%= @user.organization.name %></dd>
+    </dl>
+  </fieldset>
+</div>
+<h4>Devices</h4>
+<%= render 'devices/listing', :locals => {} %>
+
+
+<h4>Checkins</h4>
+<%= render 'checkins/listing' %>
+
+<%= link_to t('common.back'), users_path %>

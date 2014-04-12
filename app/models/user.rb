@@ -18,6 +18,14 @@ class User < ActiveRecord::Base
 
   scope :global_admins, -> { joins("INNER JOIN roles ON roles.user_id = users.id and roles.name = 'global_admin'") }
 
+  def my_checkins
+    checkins = []
+    self.devices.each do |device|
+      checkins << device.checkin
+    end
+    return checkins
+  end
+
   def is_admin?
     !roles.where(:name => 'global_admin').empty?
   end

@@ -1,0 +1,24 @@
+<table class="table table-striped">
+  <tr>
+    <th>Identifier</th>
+    <th>Platform</th>
+    <th>Platform version</th>
+    <th>Default language</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @devices.each do |device| %>
+    <tr>
+      <td><%= device.identifier %></td>
+      <td><%= device.platform %></td>
+      <td><%= device.platform_version %></td>
+      <td><%= device.default_language %></td>
+      <td><%= device.user %></td>
+      <td><%= link_to 'Show', device %></td>
+      <td><%= link_to 'Edit', edit_device_path(device) %></td>
+    </tr>
+  <% end %>
+</table>

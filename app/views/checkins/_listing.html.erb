@@ -1,0 +1,26 @@
+
+<table class="table table-striped">
+  <tbody>
+  <tr>
+    <th>Route</th>
+    <th>Location</th>
+    <th>Device</th>
+    <th>Stamp</th>
+    <th>User</th>
+    <th></th>
+  </tr>
+
+  <% @checkins.each do |checkin| %>
+    <tr>
+      <td><%= link_to checkin.route.name, checkin.route unless checkin.route.nil? %></td>
+      <td><%= link_to checkin.location.name, checkin.location unless checkin.location.nil? %></td>
+      <td><%= link_to checkin.device.identifier, checkin.device unless checkin.device.nil? %></td>
+      <td><%= checkin.stamp %></td>
+      <td><%= checkin.checked_user.email unless checkin.checked_user.nil? %></td>
+      <td><%= link_to 'Show', checkin %></td>
+
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
