@@ -11,10 +11,6 @@ class MakeFestigoOrganization < ActiveRecord::Migration
       profile.organization = o
       profile.save
     end
-    Route.all.each do |route|
-      route.organization = o
-      route.save
-    end
   end
 
   def down
