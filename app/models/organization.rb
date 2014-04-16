@@ -8,6 +8,7 @@ class Organization < ActiveRecord::Base
   attr_accessible :image, :name
   validates_presence_of :name
   after_update :crop_image
+  validates :name, :uniqueness => true
 
   has_many :users
   has_many :routes

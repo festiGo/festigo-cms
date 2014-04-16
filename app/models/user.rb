@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :token_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :login_attributes
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :login_attributes, :organization_id
 
   has_many :roles
   has_many :cities_curated, :source_type => 'City', :through => :roles, :source => :authorizable, :conditions => "roles.name ='curator'"
