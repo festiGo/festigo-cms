@@ -25,7 +25,7 @@
         <% end %>
         <td class="organization"><%= route.translated_locales.join(" | ") %></td>
         <td class="organization"><%= route.waypoints.count %></td>
-        <td class="organization"><%= route.organization.name unless route.organization.nil? %></td>
+        <td class="organization"><%= route.route_profile.organization.name unless route.route_profile.organization.nil? %></td>
         <td class="organization">
           <%- if can? :manage, route %>
             <%= link_to t('actions.view_and_edit'), route_path(route), :class => "btn" %>

@@ -11,7 +11,6 @@ class Organization < ActiveRecord::Base
   validates :name, :uniqueness => true
 
   has_many :users
-  has_many :routes
   has_many :route_profiles
 
   def self.manageable_by_user(user)

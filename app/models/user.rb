@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   def my_checkins
     checkins = []
     self.devices.each do |device|
-      checkins << device.checkin
+      checkins << device.checkins
     end
     return checkins
   end
