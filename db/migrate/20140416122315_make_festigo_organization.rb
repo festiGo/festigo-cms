@@ -7,17 +7,17 @@ class MakeFestigoOrganization < ActiveRecord::Migration
       user.organization = o
       user.save
     end
-    Route.all.each do |route|
-      route.organization = o
-      route.save
-    end
     RouteProfile.all.each do |profile|
       profile.organization = o
       profile.save
     end
+    Should be enough to update the RouteProfile
+    Route.all.each do |route|
+      route.organization = o
+      route.save
+    end
   end
 
   def down
-    Organization.delete(:name => 'festiGo')
   end
 end

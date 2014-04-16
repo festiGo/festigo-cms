@@ -35,7 +35,6 @@ class Route < ActiveRecord::Base
     self.organization_id = self.route_profile.organization.id
   end
 
-
   def validate_for_publishing
     locales = translated_locales
     waypoints.joins(:location).each do |waypoint|
