@@ -10,6 +10,7 @@ class Location < ActiveRecord::Base
 
   has_many :waypoints
   has_many :routes, :through => :waypoints
+  has_many :checkins, :dependent => :destroy
   belongs_to :network, :class_name => "City", :foreign_key => :city_id
 
   scope :in_city, ->(city_id) {
