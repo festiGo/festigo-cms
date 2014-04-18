@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   scope :global_admins, -> { joins("INNER JOIN roles ON roles.user_id = users.id and roles.name = 'global_admin'") }
 
   def my_checkins
+    #TODO: NEED FIXING FOR ERROR: ActionView::Template::Error (undefined method `location' for #<ActiveRecord::Relation:0x007f49e87d7ce0>):
     checkins = []
     self.devices.each do |device|
       checkins << device.checkins

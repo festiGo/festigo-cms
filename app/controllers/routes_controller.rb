@@ -33,7 +33,8 @@ class RoutesController < InheritedResources::Base
       @manageable_routes = @routes
       @other_routes = []
     else
-      @manageable_routes = current_user.organization.routes
+      route_profile_ids = current_user.organization.route_profiles.map{ |rp| rp.id }
+      @manageable_routes = Route.find_all_by_id(route_profile_ids)
       @other_routes = @routes - @manageable_routes
     end
   end
