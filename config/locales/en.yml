@@ -97,6 +97,12 @@ en:
       address-search-button: Search
       select_city_to_use_map: Select a city in order to enable the map
       icon_help: The image should be at least %{height} pixels tall and %{width} pixels wide
+  users:
+    index:
+      title: Users
+    show:
+      change_organization: Change Organization
+      none: None
 #  flash:
 #    actions:
 #      create:

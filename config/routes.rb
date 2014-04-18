@@ -57,7 +57,12 @@ Gohike::Application.routes.draw do
     devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations: "registrations"}
     match 'users/profile' => 'users#profile'
     scope "/admin" do
-      resources :users
+      resources :users do
+        member do
+          put :assign_to_organization
+          # match "assign_to_organization/:organization_id" => "users#assign_to_organization"
+        end
+      end
     end
 
 
