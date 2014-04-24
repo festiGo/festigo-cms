@@ -26,7 +26,7 @@
           <%- if can? :manage, route_profile %>
             <%= link_to t('actions.view_and_edit'), route_profile_path(route_profile), :class => "btn" %>
           <%- else %>
-            <%= link_to t('actions.view_details'), route_profilemode_path(route_profile), :class => "btn" %>
+            <%= link_to t('actions.view_details'), route_profile_path(route_profile), :class => "btn" %>
           <%- end %>
         </td>
       </tr>
