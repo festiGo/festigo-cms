@@ -10,7 +10,7 @@
       <% if can? :destroy, @location %>
         <%= link_to t('actions.delete', name: Location.model_name), @location, method: :delete, data: {confirm: t('common.delete_confirmation')}, :class => "btn btn-mini btn-danger pull-right" if @location.waypoints.empty? && can?(:destroy, @location) %>
       <% end %>
-      <% if can? :manage, @location %>
+      <% if can? :update, @location %>
         <%= link_to t('actions.edit', name: Location.model_name), edit_location_path(@location), :class => "btn btn-mini btn-primary pull-right" if can? :edit, @location %>
       <% end %>
     </h4>
