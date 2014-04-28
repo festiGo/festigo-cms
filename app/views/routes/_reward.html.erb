@@ -27,8 +27,10 @@
 
 <div class="row well">
   <ul class="toolbar inline">
-    <li><%= link_to t(:add_reward), new_route_reward_path(@route), :data => {:target => :"#reward_modal", :toggle => :modal}, :class => "btn btn-success" if (@route.reward.blank?) %></li>
-    <li><%= link_to t(:delete_reward), route_reward_path(@route), :method => :delete, :confirm => :are_you_sure, :remote => true, :class => "btn btn-danger" unless (@route.reward.blank?) %></li>
-    <li><%= link_to t(:edit_reward), edit_route_reward_path(@route), :data => {:target => :"#reward_modal", :toggle => :modal}, :class => "btn btn-primary" unless (@route.reward.blank?) %></li>
+    <% if can? :update, @route %>
+      <li><%= link_to t(:add_reward), new_route_reward_path(@route), :data => {:target => :"#reward_modal", :toggle => :modal}, :class => "btn btn-success" if (@route.reward.blank?) %></li>
+      <li><%= link_to t(:delete_reward), route_reward_path(@route), :method => :delete, :confirm => :are_you_sure, :remote => true, :class => "btn btn-danger" unless (@route.reward.blank?) %></li>
+      <li><%= link_to t(:edit_reward), edit_route_reward_path(@route), :data => {:target => :"#reward_modal", :toggle => :modal}, :class => "btn btn-primary" unless (@route.reward.blank?) %></li>
+    <% end %>
   </ul>
 </div>

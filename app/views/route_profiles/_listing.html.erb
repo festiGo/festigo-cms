@@ -6,10 +6,10 @@
       <th><%= model_class.human_attribute_name(:image) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:city) %></th>
+      <th><%= model_class.human_attribute_name(:translations) %></th>
       <% if current_user.is_admin? %>
-        <th><%= model_class.human_attribute_name(:translations) %></th>
+        <th><%= model_class.human_attribute_name(:priority) %></th>
       <% end %>
-      <th><%= model_class.human_attribute_name(:priority) %></th>
       <th></th>
     </tr>
     </thead>

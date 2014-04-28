@@ -14,7 +14,7 @@
 
   <div class="span5">
     <h4><%= t ('.details') %>
-      <% if can? :manage, @route_profile %>
+      <% if can? :update, @route_profile %>
         <%= link_to t('actions.edit', name: t('activerecord.models.route_profile')), edit_route_profile_path(@route_profile), :class => "btn btn-mini btn-primary pull-right" if can? :update, @route_profile %>
       <% end %>
     </h4>

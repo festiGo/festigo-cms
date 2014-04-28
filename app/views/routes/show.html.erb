@@ -15,22 +15,26 @@
     <% end %>
   </ul>
 
+  <p>
+    <b><%= model_class.human_attribute_name(:route_profile) %>:</b>
+    <%= @route.route_profile.name %>
+  </p>
+
+  <p>
+    <b><%= model_class.human_attribute_name(:organization) %>:</b>
+    <%= @route.route_profile.organization.name %>
+  </p>
+
   <div class="tab-content">
     <div class="tab-pane active" id="<%= translation_tab_id(@route, locale) %>">
-      <p>
-        <b><%= model_class.human_attribute_name(:name) %>:</b>
-        <%= @route.name %>
-      </p>
+
+      <h5><%= @route.name %></h5>
 
       <p>
         <b><%= model_class.human_attribute_name(:description) %>:</b>
         <%= @route.description %>
       </p>
 
-      <p>
-        <b><%= model_class.human_attribute_name(:organization) %>:</b>
-        <%= @route.route_profile.organization.name %>
-      </p>
     </div>
     <% @route.translations.each do |translation| %>
       <%= render :partial => "shared/translation_values", :locals => {:translation => translation, :resource => @route} %>
@@ -51,9 +55,13 @@
 </div>
 <div class="row well">
   <ul class="toolbar inline">
-    <li><%= link_to t(:crop), crop_route_path(@route), :class => "btn" %></li>
+    <% if can? :update, @route %>
+      <li><%= link_to t(:crop), crop_route_path(@route), :class => "btn" %></li>
+    <% end %>
     <li><%= link_to t('actions.edit', name: model_class.model_name), edit_route_path(@route), :class => "btn btn-primary" %></li>
-    <li><%= link_to t('actions.delete', name: model_class.model_name), route_path(@route), :method => :delete, :confirm => :are_you_sure, :class => "btn btn-danger" %></li>
+    <% if can? :manage, @route %>
+      <li><%= link_to t('actions.delete', name: model_class.model_name), route_path(@route), :method => :delete, :confirm => :are_you_sure, :class => "btn btn-danger" %></li>
+    <% end %>
   </ul>
 
 </div>
