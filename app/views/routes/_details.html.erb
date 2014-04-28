@@ -10,7 +10,7 @@
   <% if can? :publish, @route %>
     <%
        class_attr = "publish btn btn-success pull-right"
-       publish = @route.published_key.present? ? :republish : :publish
+       publish = @route.published_key.present? ? t('republish') : t('publish')
        publish_icon = @route.published_key.present? ? "icon-repeat" : "icon-ok-circle"
     %>
     <%= link_to publish_route_path(@route), :class => class_attr, :remote => true, :method => :put, :data => {:replace => "#route_details"} do %>

@@ -165,3 +165,5 @@ en:
           attributes:
             base:
               missing_translation: "Missing translation in location %{location} for %{l}"
+              no_waypoints_in_route: "There are no Locations in this Route. Please add at least one."
+              reward_is_required: "Reward is required for publishing Route"

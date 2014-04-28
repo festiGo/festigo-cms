@@ -30,6 +30,19 @@ class Route < ActiveRecord::Base
   validates_presence_of :name, :description, :city_id, :route_profile_id, :image
 
   def validate_for_publishing
+
+    # Check waypoints count
+    if waypoints.count < 1
+      errors.add(:base, :no_waypoints_in_route)
+      return errors
+    end
+
+    # Check reward
+    if reward.nil?
+      errors.add(:base, :reward_is_required)
+      return errors
+    end
+
     locales = translated_locales
     waypoints.joins(:location).each do |waypoint|
       locales.each do |locale|
