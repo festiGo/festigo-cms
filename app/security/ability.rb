@@ -14,21 +14,27 @@
         !user.role? :curator, city
       end
       can [:read, :new, :search, :in_cities], RouteProfile
-      can [:create, :update, :destroy, :crop], RouteProfile do |profile|
+      can [:create], RouteProfile do |profile|
         user.role? :curator, profile.city
+      end
+      can [:update, :destroy, :crop], RouteProfile do |profile|
+        user.organization == profile.organization
       end
       can [:read, :new, :search, :waypoints], Route
       can [:create, :update, :destroy, :crop, :publish, :unpublish], Route do |route|
-        user.role? :curator, route.city
+        user.role? :curator, route.city && user.organization == route.route_profile.organization
       end
       can [:read, :new, :search], Location
-      can [:create, :update, :destroy, :crop], Location do |location|
+      can [:create], Location do |location|
         user.role? :curator, location.network
+      end
+      can [:update, :destroy, :crop], Location do |location|
+        user.role? :curator, location.network # && user.organization == location.organization
       end
       #can :manage, Reward
 
       can [:new,:create, :update, :destroy], Reward do |reward|
-        user.role? :curator, reward.route.city
+        user.role? :curator, reward.route.city && user.organization == reward.route.route_profile.organization
       end
 
     else

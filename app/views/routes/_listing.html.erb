@@ -27,7 +27,7 @@
         <td class="organization"><%= route.waypoints.count %></td>
         <td class="organization"><%= route.route_profile.organization.name unless route.route_profile.organization.nil? %></td>
         <td class="organization">
-          <%- if can? :manage, route %>
+          <%- if can? :update, route %>
             <%= link_to t('actions.view_and_edit'), route_path(route), :class => "btn" %>
           <%- else %>
             <%= link_to t('actions.view_details'), route_path(route), :class => "btn" %>
