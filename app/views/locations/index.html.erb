@@ -30,7 +30,7 @@
       <td><%= location.postal_code %></td>
       <td><%= location.translated_locales.join(" | ") %></td>
       <td>
-        <%- if can? :manage, location %>
+        <%- if can? :update, location %>
           <%= link_to t('actions.view_and_edit'), location_path(location), :class => "btn" %>
         <%- else %>
           <%= link_to t('actions.view_details'), location_path(location), :class => "btn" %>

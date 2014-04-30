@@ -14,7 +14,7 @@
        publish_icon = @route.published_key.present? ? "icon-repeat" : "icon-ok-circle"
     %>
     <%= link_to publish_route_path(@route), :class => class_attr, :remote => true, :method => :put, :data => {:replace => "#route_details"} do %>
-      <i class="<%= publish_icon %> icon-white"></i> <%= t('publish') %>
+      <i class="<%= publish_icon %> icon-white"></i> <%= publish %>
     <% end %>
     <% if @route.published_key.present? %>
       <%= link_to unpublish_route_path(@route), :class => "unpublish btn btn-inverse pull-right", :remote => true, :method => :put, :data => {:replace => "#route_details"} do %>

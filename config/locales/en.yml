@@ -76,7 +76,7 @@ en:
   routes:
     index:
       add_route: Make a New Route
-      manageable_routes: Routes you can manage
+      manageable_routes: Routes from your Organization
       other_routes: Other Routes
     form:
       icon_help: The icon should be at least %{height} pixels tall and %{width} pixels wide
