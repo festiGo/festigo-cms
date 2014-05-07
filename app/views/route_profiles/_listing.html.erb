@@ -10,7 +10,8 @@
       <% if current_user.is_admin? %>
         <th><%= model_class.human_attribute_name(:priority) %></th>
       <% end %>
-      <th></th>
+      <th><%= model_class.human_attribute_name(:active) %></th>
+      <th>Actions</th>
     </tr>
     </thead>
     <% route_profiles.each do |route_profile| %>
@@ -22,6 +23,9 @@
         <% if current_user.is_admin? %>
           <td class="priority"><%= route_profile.priority %></td>
         <% end %>
+        <td>
+          <%= route_profile.active? ? t('common.yes') : t('common.no') %>
+        </td>
         <td>
           <%- if can? :update, route_profile %>
             <%= link_to t('actions.view_and_edit'), route_profile_path(route_profile), :class => "btn" %>

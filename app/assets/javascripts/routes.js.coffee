@@ -49,7 +49,7 @@ jQuery ->
           $rewardModal.find('.modal-body').html('<h2>Oh boy</h2><p>Sorry, but there was an error:' + xhr.status + ' ' + xhr.statusText + '</p>')
       return true
 
-
+  #Search box for Locations
   $("form").on('change' , "#route_city_id", (e)->
     $select_wrapper = $(this).parent().parent().next()
     $select_controls = $select_wrapper.find("select")

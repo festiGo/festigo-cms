@@ -35,6 +35,8 @@ en:
   # Common strings
   common:
     back: Back
+    no: no
+    yes: yes
     or: or
     in: in
     delete_confirmation: 'This action cannot be undone. Confirm deletion?'
@@ -73,6 +75,9 @@ en:
       icon_help: The icon should be at least %{height} pixels tall and %{width} pixels wide
     new:
       new: "New %{name}"
+  rewards:
+    form:
+      icon_help: The reward image should be at least %{height} pixels tall and %{width} pixels wide
   routes:
     index:
       add_route: Make a New Route
@@ -144,6 +149,9 @@ en:
         city: City
         translations: Languages
         organization: Publisher
+        date_start: Start Date
+        date_end: End Date
+        active: Active
       location:
         image: Photo
         name: Location Name

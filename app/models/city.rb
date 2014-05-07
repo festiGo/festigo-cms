@@ -36,7 +36,7 @@ class City < ActiveRecord::Base
   end
 
   def publishable_profiles
-    route_profiles.all(:joins => :routes,
+    route_profiles.where('? >= date_start AND ? <= date_end',Date.today, Date.today).all(:joins => :routes,
         :conditions => "routes.published_key IS NOT NULL",
         :group => 'route_profiles.id',
         :order => 'priority',

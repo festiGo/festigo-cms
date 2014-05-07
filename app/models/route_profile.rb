@@ -38,4 +38,8 @@ class RouteProfile < ActiveRecord::Base
     routes.where("published_key IS NOT NULL")
   end
 
+  def active?
+    Date.today <= self.date_end && Date.today >= self.date_start
+  end
+
 end

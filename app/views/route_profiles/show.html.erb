@@ -40,6 +40,15 @@
         <%= render :partial => "shared/translation_values", :locals => {:translation => translation, :resource => @route_profile} %>
       <% end %>
 
+      <p>
+        <b><%= model_class.human_attribute_name(:date_start) %>:</b>
+        <%= @route_profile.date_start.to_s('dd-mm-yyyy') %>
+      </p>
+      <p>
+        <b><%= model_class.human_attribute_name(:date_end) %>:</b>
+        <%= @route_profile.date_end.to_s('dd-mm-yyyy') %>
+      </p>
+
     </div>
   </div>
   <div class="span5">

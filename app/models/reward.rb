@@ -1,6 +1,6 @@
 class Reward < ActiveRecord::Base
-  MIN_WIDTH = 480
-  MIN_HEIGHT = 480
+  MIN_WIDTH = Rails.configuration.reward_min_width
+  MIN_HEIGHT = Rails.configuration.reward_min_height
   mount_uploader :image, RewardUploader
   belongs_to :route
   has_many :users, through: :assigned_rewards

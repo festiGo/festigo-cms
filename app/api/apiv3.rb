@@ -15,7 +15,7 @@ module Gohike
       @other = City.with_publishable_profiles
     end
 
-    desc "Called once every 24 hours by the device to get available routes and profiles"
+    desc "Called once every 24 hours by the device to get available routes and profiles. Only active profiles are returned"
     params do
       requires :city_id, type: Integer, desc: "City id"
       optional :locale, type: String, desc: "Locale"

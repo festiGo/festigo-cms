@@ -24,6 +24,10 @@ defaults: &defaults
   image_min_width: 570
   image_min_height: 380
 
+  #Min Width and Height for Reward
+  reward_min_width: 480
+  reward_min_height: 480
+
   # Email for support, will be listed at the bottom of each page
   support_email: support@festigo.es
 
