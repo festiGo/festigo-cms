@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140416135247) do
+ActiveRecord::Schema.define(:version => 20140507155117) do
+
+  create_table "assigned_rewards", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "reward_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "checkins", :force => true do |t|
     t.integer  "route_id"
@@ -84,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20140416135247) do
     t.integer  "city_id"
     t.string   "image_mobile_md5"
     t.string   "image_icon_md5"
+    t.integer  "organization_id"
   end
 
   create_table "organizations", :force => true do |t|
@@ -150,6 +158,8 @@ ActiveRecord::Schema.define(:version => 20140416135247) do
     t.string   "image_icon_md5"
     t.integer  "priority",        :default => 0
     t.integer  "organization_id"
+    t.date     "date_start"
+    t.date     "date_end"
   end
 
   create_table "route_translations", :force => true do |t|

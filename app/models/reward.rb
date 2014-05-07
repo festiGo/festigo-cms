@@ -3,6 +3,7 @@ class Reward < ActiveRecord::Base
   MIN_HEIGHT = 480
   mount_uploader :image, RewardUploader
   belongs_to :route
+  has_many :users, through: :assigned_rewards
 
   attr_accessible :description, :image, :name, :route_id, :translations_attributes
 

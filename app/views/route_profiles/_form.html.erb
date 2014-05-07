@@ -14,6 +14,8 @@
         <%= hidden_field_tag :priority, 0 %>
       <%- end %>
       <%= f.input :image, hint: t('.icon_help', width: Rails.configuration.route_profile_image_min_width, height: Rails.configuration.route_profile_image_min_height) %>
+      <%= f.input :date_start %>
+      <%= f.input :date_end %>
     </div>
     <div class="span9">
 

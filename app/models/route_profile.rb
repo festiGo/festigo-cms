@@ -7,7 +7,7 @@ class RouteProfile < ActiveRecord::Base
   MIN_HEIGHT = Rails.configuration.route_profile_image_min_height
   MIN_WIDTH = Rails.configuration.route_profile_image_min_width
 
-  attr_accessible :description, :image, :name, :translations_attributes,:city, :city_id, :priority, :organization_id
+  attr_accessible :description, :image, :name, :translations_attributes,:city, :city_id, :priority, :organization_id, :date_start, :date_end
 
   belongs_to :city
   has_many :routes, :dependent => :destroy
@@ -15,7 +15,7 @@ class RouteProfile < ActiveRecord::Base
 
   translates :name, :fallbacks_for_empty_translations => true
   accepts_nested_attributes_for :translations
-  validates_presence_of :name
+  validates_presence_of :name, :image
   after_update :crop_image
   validate :validate_minimum_image_size
 

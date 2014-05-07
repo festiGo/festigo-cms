@@ -3,7 +3,7 @@ class Location < ActiveRecord::Base
   acts_as_gmappable :process_geocoding => :geocode?
   include ImageModel
 
-  attr_accessible :address, :city, :latitude, :longitude, :postal_code, :image, :name, :description, :city_id, :translations_attributes
+  attr_accessible :address, :city, :latitude, :longitude, :postal_code, :image, :name, :description, :city_id, :translations_attributes, :organization_id
 
   translates :name, :description, :fallbacks_for_empty_translations => true
   accepts_nested_attributes_for :translations, :allow_destroy => true
@@ -12,6 +12,7 @@ class Location < ActiveRecord::Base
   has_many :routes, :through => :waypoints
   has_many :checkins, :dependent => :destroy
   belongs_to :network, :class_name => "City", :foreign_key => :city_id
+  belongs_to :organization
 
   scope :in_city, ->(city_id) {
     where(:city_id => city_id)
@@ -22,11 +23,17 @@ class Location < ActiveRecord::Base
   }
 
   after_update :crop_image
-  validates_presence_of :name, :description, :city_id,  :address, :city, :latitude, :longitude
+  validates_presence_of :name, :description, :city_id,  :address, :city, :latitude, :longitude, :organization_id
   validate :validate_minimum_image_size
   validates_length_of :name, :maximum => 35
   validates_length_of :description, :maximum => 2048
+  before_create :check_assigned_to_organization
 
+  def check_assigned_to_organization
+    if self.organization == nil
+      self.organization = current_user.organization
+    end
+  end
 
   def geocode?
     (!address.blank? && (latitude.blank? || longitude.blank?))
