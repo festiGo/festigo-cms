@@ -26,7 +26,7 @@
 
         <h5><%= @location.name %></h5>
 
-        <p><%= @location.description %></p>
+        <p><%= simple_format(@location.description) %></p>
       </div>
       <% @location.translations.each do |translation| %>
         <%= render :partial => "shared/translation_values", :locals => {:translation => translation, :resource => @location} %>

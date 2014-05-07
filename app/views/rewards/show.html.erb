@@ -11,7 +11,7 @@
     <p class="lead">
       <img style="width: 400px; height: 400px;" src="<%= @reward.image %>">
     </p>
-    <p class="lead">  <%= @reward.description %></p>
+    <p class="lead">  <%= simple_format(@reward.description) %></p>
   </div>
   <hr>
   <p class="lead centered">festiGo</p>

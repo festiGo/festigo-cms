@@ -4,7 +4,7 @@
     <% if translation.has_attribute? :description %>
       <p>
         <b><%= resource.class.human_attribute_name(:description) %>:</b>
-        <%= translation.description %>
+        <%= simple_format(translation.description) %>
       </p>
     <% end %>
   </div>

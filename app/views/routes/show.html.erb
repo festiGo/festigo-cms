@@ -32,7 +32,7 @@
 
       <p>
         <b><%= model_class.human_attribute_name(:description) %>:</b>
-        <%= @route.description %>
+        <%= simple_format(@route.description) %>
       </p>
 
     </div>
