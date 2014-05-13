@@ -71,6 +71,7 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
+    daemons (1.1.9)
     descendants_tracker (0.0.1)
     devise (2.2.4)
       bcrypt-ruby (~> 3.0)
@@ -81,6 +82,7 @@ GEM
     dotenv-rails (0.7.0)
       dotenv (= 0.7.0)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     excon (0.32.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -227,6 +229,10 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     subexec (0.2.3)
+    thin (1.6.2)
+      daemons (>= 1.0.9)
+      eventmachine (>= 1.0.0)
+      rack (>= 1.0.0)
     thor (0.19.1)
     tilt (1.4.1)
     treetop (1.4.15)
@@ -274,4 +280,5 @@ DEPENDENCIES
   remotipart (~> 1.0)
   sass-rails (~> 3.2.3)
   simple_form
+  thin
   uglifier (>= 1.0.3)
