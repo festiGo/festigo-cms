@@ -3,6 +3,10 @@
 
   <div class="form-inputs clearfix">
     <%= f.association :organization, collection: @organizations,  :include_blank => false %>
+    <%= f.simple_fields_for :roles do |c| %>
+      <%= c.hidden_field :name, :value => :curator %>
+      <%= c.association :authorizable, label: t('.curator_of'), collection: City.all, :include_blank => true%>
+    <% end %>
     <%= f.input :email %>
     <%= f.input :password %>
   </div>

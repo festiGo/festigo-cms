@@ -28,6 +28,7 @@ nl:
     logged_in_as: "Logged in as %{email}"
     admin: Admin
     organizations: Organizations
+    users: Users
   devise:
     shared:
       signin_links:
@@ -108,6 +109,8 @@ nl:
     show:
       change_organization: Change Organization
       none: None
+    form:
+      curator_of: Curator of
 #  flash:
 #    actions:
 #      create:

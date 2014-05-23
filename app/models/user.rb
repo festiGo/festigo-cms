@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :token_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :login_attributes, :organization_id
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :login_attributes, :organization_id, :roles_attributes
 
   has_many :roles
   has_many :cities_curated, :source_type => 'City', :through => :roles, :source => :authorizable, :conditions => "roles.name ='curator'"
@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
   has_many :devices
   belongs_to :organization
   has_many :rewards, through: :assigned_rewards
+
+  accepts_nested_attributes_for :roles
+  accepts_nested_attributes_for :organization
 
   scope :global_admins, -> { joins("INNER JOIN roles ON roles.user_id = users.id and roles.name = 'global_admin'") }
 
