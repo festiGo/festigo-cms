@@ -111,6 +111,7 @@ nl:
       none: None
     form:
       curator_of: Curator of
+      password_hint: Leave it blank if you don't wish to change the user's password
 #  flash:
 #    actions:
 #      create:

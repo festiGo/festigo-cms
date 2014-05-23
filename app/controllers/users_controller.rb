@@ -27,7 +27,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    params[:user].delete(:password)
+    if params[:user][:password].length < 1
+      # This means that the password length is 0
+      # This means we are updating the user without changing his/her password
+      # Since a password "" will not pass validation, we unset the params dictionary for the password key
+      params[:user].delete(:password)
+    end
+
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
