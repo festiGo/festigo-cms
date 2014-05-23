@@ -12,7 +12,7 @@
 
   <% @checkins.each do |checkin| %>
     <tr>
-      <td><%= link_to checkin.location.route.name, checkin.location.route unless checkin.location.nil? %></td>
+      <td><%= link_to checkin.route.name, checkin.route unless checkin.route.nil? %></td>
       <td><%= link_to checkin.location.name, checkin.location unless checkin.location.nil? %></td>
       <td><%= link_to checkin.device.identifier, checkin.device unless checkin.device.nil? %></td>
       <td><%= checkin.stamp %></td>
