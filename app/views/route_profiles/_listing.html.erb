@@ -24,7 +24,7 @@
           <td class="priority"><%= route_profile.priority %></td>
         <% end %>
         <td>
-          <%= route_profile.active? ? t('common.yes') : t('common.no') %>
+          <%= route_profile.active? == true ? t('common.yes') : t('common.no') %>
         </td>
         <td>
           <%- if can? :update, route_profile %>
