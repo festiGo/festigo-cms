@@ -1,11 +1,12 @@
 namespace :republish_routes do
   desc "Rake task to republish all routes"
-  task :republish_all => :environment do
+  task :republish_published => :environment do
     Route.all.each do |route|
       errors = route.validate_for_publishing
       if errors.empty?
         if route.published_key.blank?
-          route.published_key = Devise.friendly_token
+          #We are only publishing published routes. If it's not published, don't publish it.
+          break
         end
         delete_published_key = route.published_key
         renderer = Rabl::Renderer.new('route', route, {:format => 'json', :view_path => 'app/views/api'})
