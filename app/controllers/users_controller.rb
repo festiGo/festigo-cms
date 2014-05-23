@@ -57,6 +57,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @user.roles.build
   end
 
   def profile
